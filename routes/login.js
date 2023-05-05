@@ -11,7 +11,7 @@ router.post("/auth/login", (req, res) => {
     expiresIn: "2h",
   });
 
-  res.cookie("token", token, { httpOnly: true });
+  res.cookie("token", token, { httpOnly: true,  sameSite: "none", secure: true, maxAge: 24 * 3600 * 1000 });
   res.status(200).json({ data: "some data" });
 });
 
